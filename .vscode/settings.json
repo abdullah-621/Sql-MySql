@@ -11,7 +11,7 @@
       "port": 3306,
       "driver": "MySQL",
       "name": "MySQL local",
-      "database": "students",
+      "database": "collage",
       "username": "root",
       "connectionTimeout": 30
     }
