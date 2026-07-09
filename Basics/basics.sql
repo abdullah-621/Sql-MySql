@@ -13,5 +13,8 @@ INSERT into students values(2, "Noman", 17);
 
 select * FROM students;
 
+-- DROP database students;
+-- DROP table students;
+
 SHOW databases;
 SHOW tables;
