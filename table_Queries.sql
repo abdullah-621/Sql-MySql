@@ -19,3 +19,9 @@ WHERE roolno = 101;
 UPDATE student
 SET grade = "F"
 WHERE marks < 80;
+
+
+DELETE FROM student 
+WHERE marks < 80;
+
+
