@@ -30,3 +30,5 @@ SELECT mode, COUNT(customer)
 FROM customer_table 
 GROUP BY mode 
 ORDER BY COUNT(customer) ASC ;
+
+
