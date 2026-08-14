@@ -93,6 +93,64 @@ WHERE movie_id IN(
   )
 );
 
+-- ======= 9 no ==========
+
+SELECT movie_id,movie_name, genre, imdb_rating, year
+FROM movie
+WHERE year IN(
+  SELECT year
+  FROM movie
+  WHERE genre = 'Biography'
+);
+
+
+-- ======= 10 no ==========
+
+SELECT Actor_name, birth_year
+FROM actor
+WHERE birth_year IN(
+  SELECT birth_year
+  FROM Director
+);
+
+-- ======= 11 no ==========
+
+SELECT movie_id, movie_name, director_id
+FROM movie
+WHERE director_id NOT IN (
+    SELECT person_id
+    FROM director
+    WHERE birth_year < 1950
+);
+
+
+SELECT character_id, character_name, age
+FROM movie_characters
+WHERE character_id IN (
+  SELECT character_id
+  FROM movie_character_relationship
+  WHERE movie_id IN(
+    SELECT movie_id
+    FROM movie
+    WHERE year > 2010
+  )
+);
+
+SELECT movie_name
+FROM movie
+WHERE movie_id IN(
+  SELECT movie_id
+  FROM movie_character_relationship
+  WHERE character_id IN(
+    SELECT character_id
+    FROM movie_characters
+    WHERE age IS NULL
+  )
+);
+
+
+
+
 
 
 
