@@ -149,6 +149,71 @@ WHERE movie_id IN(
 );
 
 
+SELECT Director_Name
+FROM director
+WHERE person_id IN(
+  SELECT person_id
+  FROM movie
+  WHERE imdb_rating > (
+    SELECT AVG(imdb_rating)
+    FROM movie
+  )
+);
+
+
+SELECT director_name
+FROM director
+WHERE person_id IN(
+  SELECT person_id
+  FROM movie
+  GROUP BY(person_id)
+  HAVING COUNT(*) > 1
+)
+
+
+SELECT director_name
+FROM director
+WHERE person_id IN( 
+  SELECT person_id
+  FROM movie
+  WHERE IMDB_Rating >= 8
+  GROUP BY(person_id)
+  HAVING COUNT(*) >= 2
+)
+
+SELECT movie_name
+FROM movie
+WHERE director_id IN (
+    SELECT director_id
+    FROM movie
+    GROUP BY director_id
+    HAVING AVG(imdb_rating) > 8.0
+);
+
+
+SELECT director_name
+FROM director
+WHERE person_id IN(
+  SELECT person_id
+  FROM movie
+  GROUP BY person_id
+  HAVING COUNT(DISTINCT Genre) > 1
+)
+
+SELECT movie_name
+FROM movie
+WHERE genre IN(
+  SELECT genre
+  FROM movie
+  GROUP BY genre
+  HAVING COUNT(*) >= 2
+);
+
+
+
+
+
+
 
 
 
